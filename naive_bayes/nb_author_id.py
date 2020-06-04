@@ -9,7 +9,7 @@
     Sara has label 0
     Chris has label 1
 """
-    
+
 import sys
 from time import time
 sys.path.append("../tools/")
@@ -26,7 +26,21 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+t0 = time()
+clf.fit(features_train, labels_train)
+print "training time:", round(time() - t0, 3), "s"
 
+# Put similar lines of code around the clf.predict() line of code, so you can compare the time to train the classifier and to make predictions with it. What is faster, training or prediction?
+
+t1 = time()
+prediction = clf.predict(features_test)
+print "training time:", round(time() - t1, 3), "s"
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(labels_test, prediction)
+print "accuracy is:", accuracy
 
 #########################################################
 
