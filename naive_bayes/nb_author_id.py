@@ -32,8 +32,6 @@ t0 = time()
 clf.fit(features_train, labels_train)
 print "training time:", round(time() - t0, 3), "s"
 
-# Put similar lines of code around the clf.predict() line of code, so you can compare the time to train the classifier and to make predictions with it. What is faster, training or prediction?
-
 t1 = time()
 prediction = clf.predict(features_test)
 print "training time:", round(time() - t1, 3), "s"
