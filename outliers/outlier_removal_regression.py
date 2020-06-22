@@ -76,6 +76,7 @@ if len(cleaned_data) > 0:
         reg.fit(ages, net_worths)
         print 'reg.coef_ after cleaning:', reg.coef_
         print 'reg.intercept_ after cleaning:', reg.intercept_
+        print 'score after cleaning:', reg.score(ages_test, net_worths_test)
         plt.plot(ages, reg.predict(ages), color="blue")
     except NameError:
         print "you don't seem to have regression imported/created,"
