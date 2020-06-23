@@ -56,11 +56,12 @@ data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
 
 
+
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-# for f1, f2, _ in finance_features:
+for f1, f2, _ in finance_features:
 for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
@@ -80,6 +81,13 @@ array_of_salary = [value.get('salary') for key, value in data_dict.iteritems() i
 # print 'array_of_exercised_stock_options:', array_of_exercised_stock_options
 print 'maximum value taken by the salary:', max(array_of_salary)
 print 'minimum value taken by the salary:', min(array_of_salary)
+
+print 'rescaled value of a "salary" feature that had an original value of $200,000, and an "exercised_stock_options" feature of $1 million:'
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(finance_features)
+transformed_features = scaler.transform([[200000., 1000000.]])
+print transformed_features
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
